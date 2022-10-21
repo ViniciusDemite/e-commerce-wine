@@ -25,7 +25,7 @@ Uma antiga loja de vinhos gostaria de vender seus produtos também pela internet
 
 O projeto está constituído em back-end e front-end separados, sendo:
 
-- [api](./api) o diretório onde se encontra o back-end da aplicação com [Leaf PHP](https://api.leafphp.dev/docs/)
+- [api](./api) o diretório onde se encontra o back-end da aplicação com [Laravel](https://laravel.com/docs/9.x)
 - [web](./web/) o diretório onde se encontra o front-end da aplicação com e [Next.js](https://nextjs.org/docs/getting-started)
 
 ## Requisitos do projeto
@@ -35,3 +35,5 @@ Para a execução do projeto é necessário ter instaladas as seguintes tecnolog
 - [node.js](https://nodejs.org/en/) || [yarn](https://yarnpkg.com/getting-started/install)
 - [PHP ~7.1 || ^8.0](https://www.php.net/manual/en/install.php)
 - [composer](https://getcomposer.org/download/)
+- [Docker](https://docs.docker.com/engine/install/)
+- [Docker Compose](https://docs.docker.com/compose/)
