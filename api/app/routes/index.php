@@ -45,3 +45,4 @@ app()->setNamespace("\App\Controllers");
 require __DIR__ . "/_app.php";
 require __DIR__ . "/_auth.php";
 require __DIR__ . "/_users.php";
+require __DIR__ . "/_wine.php";
