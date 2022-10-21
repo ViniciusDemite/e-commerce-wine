@@ -1,130 +1,55 @@
 <?php
 
+use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Http\Request;
+
+define('LARAVEL_START', microtime(true));
+
 /*
 |--------------------------------------------------------------------------
-| Switch to root path
+| Check If The Application Is Under Maintenance
 |--------------------------------------------------------------------------
 |
-| Point to the application root directory so leaf can accurately
-| resolve app paths.
+| If the application is in maintenance / demo mode via the "down" command
+| we will load this file so that any pre-rendered content can be shown
+| instead of starting the framework, which could cause an exception.
 |
 */
-chdir(dirname(__DIR__));
+
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+    require $maintenance;
+}
 
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
 |--------------------------------------------------------------------------
 |
-| Composer provides a convenient, automatically generated class loader
-| for our application. We just need to utilize it! We'll require it
-| into the script here so that we do not have to worry about the
-| loading of any our classes 'manually'. Feels great to relax.
+| Composer provides a convenient, automatically generated class loader for
+| this application. We just need to utilize it! We'll simply require it
+| into the script here so we don't need to manually load our classes.
 |
 */
-require dirname(__DIR__) . '/vendor/autoload.php';
+
+require __DIR__.'/../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
-| Bring in (env)
+| Run The Application
 |--------------------------------------------------------------------------
 |
-| Quickly use our environment variables
+| Once we have the application, we can handle the incoming request using
+| the application's HTTP kernel. Then, we will send the response back
+| to this client's browser, allowing them to enjoy our application.
 |
 */
-try {
-    \Dotenv\Dotenv::createUnsafeImmutable(dirname(__DIR__))->load();
-} catch (\Throwable $th) {
-    trigger_error($th);
-}
 
-/*
-|--------------------------------------------------------------------------
-| Attach blade view
-|--------------------------------------------------------------------------
-|
-| Since blade no longer ships with Leaf by default, we
-| can attach blade back to Leaf so you can use Leaf MVC
-| as you've always used it.
-|
-*/
-Leaf\View::attach(\Leaf\Blade::class);
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
-/*
-|--------------------------------------------------------------------------
-| Load application paths
-|--------------------------------------------------------------------------
-|
-| Decline static file requests back to the PHP built-in webserver
-|
-*/
-if (php_sapi_name() === 'cli-server') {
-    $path = realpath(__DIR__ . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+$kernel = $app->make(Kernel::class);
 
-    if (is_string($path) && __FILE__ !== $path && is_file($path)) {
-        return false;
-    }
+$response = $kernel->handle(
+    $request = Request::capture()
+)->send();
 
-    unset($path);
-}
-
-/*
-|--------------------------------------------------------------------------
-| Load application paths
-|--------------------------------------------------------------------------
-|
-| Tell Leaf MVC Core where to locate application paths
-|
-*/
-Leaf\Core::paths(PathsConfig());
-
-/*
-|--------------------------------------------------------------------------
-| Additional Leaf Database Config
-|--------------------------------------------------------------------------
-|
-| Load leaf database configuration
-|
-*/
-Leaf\Database::config(DatabaseConfig());
-
-/*
-|--------------------------------------------------------------------------
-| Initialise Config
-|--------------------------------------------------------------------------
-|
-| Pass your application configuration into your leaf app.
-|
-*/
-app()->config(AppConfig());
-
-/*
-|--------------------------------------------------------------------------
-| Default fix for CORS
-|--------------------------------------------------------------------------
-|
-| This just prevents the connection client from throwing
-| CORS errors at you.
-|
-*/
-app()->cors(CorsConfig());
-
-/*
-|--------------------------------------------------------------------------
-| Route Config
-|--------------------------------------------------------------------------
-|
-| Require app routes.
-|
-*/
-require dirname(__DIR__) . '/app/routes/index.php';
-
-/*
-|--------------------------------------------------------------------------
-| Run Leaf Application
-|--------------------------------------------------------------------------
-|
-| Require app routes
-|
-*/
-app()->run();
+$kernel->terminate($request, $response);

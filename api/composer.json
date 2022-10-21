@@ -1,68 +1,64 @@
 {
-    "name": "leafs/api",
-    "description": "A lightweight PHP MVC framework for rapid API development.",
-    "type": "library",
-    "keywords": [
-        "framework",
-        "leaf",
-        "leafPHP",
-        "mvc",
-        "leaf api",
-        "api"
-    ],
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Michael Darko",
-            "email": "mickdd22@gmail.com",
-            "homepage": "https://mychi.netlify.app",
-            "role": "Maintainer"
-        }
-    ],
     "require": {
-        "leafs/aloe": "*",
-        "illuminate/console": "^8.75",
-        "leafs/blade": "*",
-        "leafs/mvc-core": "*",
-        "leafs/leaf": "^3.2",
-        "leafs/logger": "*",
-        "leafs/cors": "*",
-        "leafs/auth": "^2",
-        "leafs/db": "^2"
+        "php": "^8.0.2",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^9.19",
+        "laravel/sanctum": "^3.0",
+        "laravel/tinker": "^2.7"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.16"
+        "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.0",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^6.1",
+        "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ignition": "^1.0"
     },
     "autoload": {
         "psr-4": {
-            "Lib\\": "lib/",
             "App\\": "app/",
-            "Config\\": "config/",
-            "App\\Http\\": "app/http/",
-            "App\\Jobs\\": "app/jobs/",
-            "App\\Views\\": "app/views/",
-            "App\\Utils\\": "app/utils/",
-            "App\\Models\\": "app/models/",
-            "App\\Workers\\": "app/workers/",
-            "App\\Console\\": "app/console/",
-            "App\\Scripts\\": "app/scripts/",
-            "App\\Helpers\\": "app/helpers/",
-            "App\\Services\\": "app/services/",
-            "App\\Controllers\\": "app/controllers/",
-            "App\\Database\\Seeds\\": "app/database/seeds/",
-            "App\\Database\\Schema\\": "app/database/schema/",
-            "App\\Database\\Factories\\": "app/database/factories/"
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
         }
     },
     "config": {
         "optimize-autoloader": true,
-        "sort-packages": false
-    },
-    "scripts": {
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-            "@php -r \"unlink('README.MD'); rename('README2.MD', 'README.MD');\""
-        ]
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
