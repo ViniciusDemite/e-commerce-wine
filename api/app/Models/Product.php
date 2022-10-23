@@ -17,8 +17,6 @@ class Product extends Model
         "category_id"
     ];
 
-    protected $with = ["category"];
-
     /**
      * Get the category that owns the Product
      *
