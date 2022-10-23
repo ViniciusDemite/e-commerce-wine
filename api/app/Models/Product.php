@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
@@ -16,6 +17,18 @@ class Product extends Model
         "weight",
         "category_id"
     ];
+
+    protected $with = ["category"];
+
+    /**
+     * Get all of the items for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function items(): HasMany
+    {
+        return $this->hasMany(Item::class, 'product_id', 'id');
+    }
 
     /**
      * Get the category that owns the Product
