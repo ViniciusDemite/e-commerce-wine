@@ -12,18 +12,27 @@ interface PropsType extends PropsWithChildren {
 export default function Card({ product }: PropsType) {
 	return (
 		<article className={styles.card}>
-			<Image
-				src={placeholder}
-				alt="Imagem placeholder para produto!"
-				className={styles.product_image}
-			/>
+			<figure>
+				<Image
+					src={placeholder}
+					alt="Imagem placeholder para produto!"
+					width={250}
+					height={200}
+				/>
+			</figure>
 
 			<h4 className={styles.card_title}>
 				<strong>{product.name}</strong>
 			</h4>
-			<p className={styles.card_weight}>Peso: {product.weight}</p>
-			<p className={styles.card_category}>Categoria: {product.category.name}</p>
-			<Link href={`/produtos/${product.slug}`}>Ver mais</Link>
+			<p className={styles.card_weight}>
+				<strong>Peso:</strong> {product.weight}
+			</p>
+			<p className={styles.card_category}>
+				<strong>Categoria:</strong> {product.category.name}
+			</p>
+			<Link href={`/produtos/${product.slug}`}>
+				<a className={styles.card_btn}>Ver mais</a>
+			</Link>
 		</article>
 	);
 }
