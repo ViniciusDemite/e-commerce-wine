@@ -1,3 +1,4 @@
+import { parse } from "node:path/win32";
 import { ChangeEvent, useState } from "react";
 import axios from "../../services/axios";
 import styles from "../../styles/Form.module.css";
@@ -16,8 +17,8 @@ export default function Form({ product_id }: FormProps) {
 
 		const params = {
 			cart_id: null,
-			quantity: event.target.quantity.value,
-			product_id: event.target.id.value,
+			quantity: parseInt(event.target.quantity.value),
+			product_id: parseInt(event.target.id.value),
 		};
 
 		const response = await axios.post("http://localhost:5500/api/cart", {
