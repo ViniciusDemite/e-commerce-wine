@@ -1,5 +1,6 @@
 import { GetServerSideProps } from "next";
 import Card from "../../components/card";
+import axios from "../../services/axios";
 import styles from "../../styles/Products.module.css";
 import ProductsProps from "../../ts/interfaces/ProductsInterface";
 import ProductType from "../../ts/types/product";
@@ -19,8 +20,8 @@ export default function Products({ products }: ProductsProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	const response = await fetch("http://localhost:5500/api/products");
-	const { data: products } = await response.json();
+	const response = await axios.get("/products");
+	const { data: products } = await response.data;
 
 	return {
 		props: {
