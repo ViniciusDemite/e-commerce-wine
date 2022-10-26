@@ -1,15 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { PropsWithChildren } from "react";
 import styles from "../styles/Card.module.css";
-import { ProductType } from "../ts/interfaces/product";
 import placeholder from "../public/placeholder.png";
+import CardProps from "../ts/interfaces/CardInterface";
 
-interface PropsType extends PropsWithChildren {
-	product: ProductType;
-}
-
-export default function Card({ product }: PropsType) {
+export default function Card({ product }: CardProps) {
 	return (
 		<article className={styles.card}>
 			<figure>

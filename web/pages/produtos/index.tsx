@@ -1,14 +1,10 @@
 import { GetServerSideProps } from "next";
-import { PropsWithChildren } from "react";
 import Card from "../../components/card";
-import { ProductType } from "../../ts/interfaces/product";
 import styles from "../../styles/Products.module.css";
+import ProductsProps from "../../ts/interfaces/ProductsInterface";
+import ProductType from "../../ts/types/product";
 
-interface PropsType extends PropsWithChildren {
-	products: ProductType[];
-}
-
-export default function Products({ products }: PropsType) {
+export default function Products({ products }: ProductsProps) {
 	return (
 		<>
 			<h1 className={styles.title}>Produtos</h1>
