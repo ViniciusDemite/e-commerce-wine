@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShippingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,8 @@ Route::prefix('cart')->group(function () {
 
     Route::put('/item/{item}', [ItemController::class, 'update']);
 });
+
+Route::post('shipping/{cart}', [ShippingController::class, 'index']);
 
 
 // Protected Routes
