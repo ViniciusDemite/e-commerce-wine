@@ -10,6 +10,7 @@ export default function Layout({ children }: PropsWithChildren) {
 			<Head>
 				<title>Wine E-Commerce</title>
 				<meta name="description" content="E-commerce de vinho" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 			</Head>
 			<Navbar />
 			<main className={styles.main}>
