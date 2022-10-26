@@ -27,6 +27,7 @@ O projeto está constituído em back-end e front-end separados, sendo:
 
 - [api](./api) o diretório onde se encontra o back-end da aplicação com [Laravel](https://laravel.com/docs/9.x)
 - [web](./web/) o diretório onde se encontra o front-end da aplicação com e [Next.js](https://nextjs.org/docs/getting-started)
+- [e-wine](./e-wine.postman_collection.json) arquivo de configuração .json para [Postman](https://www.postman.com/)
 
 ## Requisitos do projeto
 
