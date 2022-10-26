@@ -13,7 +13,13 @@ export default function Navbar() {
 				</Link>
 			</figure>
 
-			<FaShoppingCart className={styles.cart} />
+			<div className={styles.links_container}>
+				<Link href="/produtos">
+					<a className={styles.link}>Produtos</a>
+				</Link>
+
+				<FaShoppingCart className={styles.cart} />
+			</div>
 		</nav>
 	);
 }

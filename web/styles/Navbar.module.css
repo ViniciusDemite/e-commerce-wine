@@ -16,3 +16,17 @@
 	width: 20px;
 	height: 20px;
 }
+
+.links_container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.link {
+	margin-right: 1rem;
+}
+
+.link:hover {
+	color: #0162d1;
+}
