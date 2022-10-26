@@ -52,32 +52,6 @@ export default function Product({ product }: ProductProps) {
 			</p>
 
 			<Form product_id={product.id} />
-
-			{/* <div className={styles.input_container}>
-				<label htmlFor="quantity" className={styles.label}>
-					Quantidade:
-				</label>
-				<input
-					type="number"
-					name="quantity"
-					id="quantity"
-					value={quantity}
-					onChange={changeQuantityValue}
-					className={styles.input}
-				/>
-			</div>
-
-			<button
-				type="button"
-				className={styles.cart_button}
-				onClick={async () => {
-					await addItemToCart(product.id, quantity, router);
-				}}
-			>
-				Comprar
-			</button> */}
-
-			{/*  */}
 		</>
 	);
 }
