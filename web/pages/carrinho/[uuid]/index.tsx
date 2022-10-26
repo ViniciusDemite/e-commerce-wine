@@ -19,6 +19,10 @@ export default function Cart({ cart }: CartProps) {
 								<strong>Peso:</strong>&nbsp;
 								{item.product.weight}
 							</span>
+							<span>
+								<strong>Quantidade:</strong>&nbsp;
+								{item.quantity}
+							</span>
 						</li>
 					))}
 				</ul>
