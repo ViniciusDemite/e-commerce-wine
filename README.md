@@ -25,15 +25,15 @@ Uma antiga loja de vinhos gostaria de vender seus produtos também pela internet
 
 O projeto está constituído em back-end e front-end separados, sendo:
 
-- [api](./api) o diretório onde se encontra o back-end da aplicação com [Laravel](https://laravel.com/docs/9.x){:target="\_blank" rel="noopener"}
-- [web](./web/) o diretório onde se encontra o front-end da aplicação com e [Next.js](https://nextjs.org/docs/getting-started){:target="\_blank" rel="noopener"}
+- [api](./api) o diretório onde se encontra o back-end da aplicação com [Laravel](https://laravel.com/docs/9.x)
+- [web](./web/) o diretório onde se encontra o front-end da aplicação com e [Next.js](https://nextjs.org/docs/getting-started)
 
 ## Requisitos do projeto
 
 Para a execução do projeto é necessário ter instaladas as seguintes tecnologias:
 
-- [node.js](https://nodejs.org/en/){:target="\_blank" rel="noopener"} || [yarn](https://yarnpkg.com/getting-started/install){:target="\_blank" rel="noopener"}
-- [PHP ~7.1 || ^8.0](https://www.php.net/manual/en/install.php){:target="\_blank" rel="noopener"}
-- [composer](https://getcomposer.org/download/){:target="\_blank" rel="noopener"}
-- [Docker](https://docs.docker.com/engine/install/){:target="\_blank" rel="noopener"}
-- [Docker Compose](https://docs.docker.com/compose/){:target="\_blank" rel="noopener"}
+- [node.js](https://nodejs.org/en/) || [yarn](https://yarnpkg.com/getting-started/install)
+- [PHP ~7.1 || ^8.0](https://www.php.net/manual/en/install.php)
+- [composer](https://getcomposer.org/download/)
+- [Docker](https://docs.docker.com/engine/install/)
+- [Docker Compose](https://docs.docker.com/compose/)
