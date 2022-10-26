@@ -1,0 +1,35 @@
+.title {
+	font-size: 35px;
+	color: #0070f3;
+	text-transform: capitalize;
+	margin-bottom: 2rem;
+}
+
+.list_container {
+	display: grid;
+	grid-template-rows: 100%;
+	grid-template-columns: 70% 30%;
+	gap: 1rem;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+	padding-left: unset;
+	margin: unset;
+	border-right: 2px dotted gray;
+	padding-right: 1rem;
+}
+
+.list_item {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.list_item:not(:last-of-type) {
+	border-bottom: 1px solid gray;
+}
