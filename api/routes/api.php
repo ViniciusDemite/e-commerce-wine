@@ -23,6 +23,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{product}', [ProductController::class, 'show']);
 
 Route::prefix('cart')->group(function () {
     Route::get('/{cart}', [CartController::class, 'show']);
@@ -41,5 +42,5 @@ Route::middleware('auth:sanctum')->group(function () {
         ->except(['index']);
 
     Route::apiResource('products', ProductController::class)
-        ->except(['index']);
+        ->except(['index', 'show']);
 });
