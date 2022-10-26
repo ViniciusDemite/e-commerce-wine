@@ -1,8 +1,10 @@
 import { PropsWithChildren } from "react";
 import ProductType from "../types/product";
 
-interface ProductsProps extends PropsWithChildren {
+export interface ProductsProps extends PropsWithChildren {
 	products: ProductType[];
 }
 
-export default ProductsProps;
+export interface ProductProps extends PropsWithChildren {
+	product: ProductType;
+}

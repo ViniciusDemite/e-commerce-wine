@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next";
 import Card from "../../components/card";
 import axios from "../../services/axios";
 import styles from "../../styles/Products.module.css";
-import ProductsProps from "../../ts/interfaces/ProductsInterface";
+import { ProductsProps } from "../../ts/interfaces/ProductsInterface";
 import ProductType from "../../ts/types/product";
 
 export default function Products({ products }: ProductsProps) {
