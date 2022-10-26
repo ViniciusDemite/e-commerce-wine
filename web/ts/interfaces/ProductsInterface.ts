@@ -8,3 +8,7 @@ export interface ProductsProps extends PropsWithChildren {
 export interface ProductProps extends PropsWithChildren {
 	product: ProductType;
 }
+
+export interface FormProps extends PropsWithChildren {
+	product_id: number;
+}

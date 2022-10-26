@@ -8,9 +8,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
+import Form from "../../../components/product/form";
 
 export default function Product({ product }: ProductProps) {
-	const router = useRouter();
+	/* const router = useRouter();
 	const [quantity, setQuantity] = useState(1);
 
 	function changeQuantityValue(e: ChangeEvent<HTMLInputElement>) {
@@ -31,7 +32,7 @@ export default function Product({ product }: ProductProps) {
 		const { data: cart } = await response.data;
 
 		console.log(cart);
-	}
+	} */
 
 	return (
 		<>
@@ -50,7 +51,9 @@ export default function Product({ product }: ProductProps) {
 				<strong>Peso:</strong> {product.weight}
 			</p>
 
-			<div className={styles.input_container}>
+			<Form product_id={product.id} />
+
+			{/* <div className={styles.input_container}>
 				<label htmlFor="quantity" className={styles.label}>
 					Quantidade:
 				</label>
@@ -72,7 +75,7 @@ export default function Product({ product }: ProductProps) {
 				}}
 			>
 				Comprar
-			</button>
+			</button> */}
 
 			{/*  */}
 		</>
