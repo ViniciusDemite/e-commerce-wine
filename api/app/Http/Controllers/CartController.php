@@ -7,6 +7,7 @@ use App\Http\Requests\Cart\CartUpdateRequest;
 use App\Http\Resources\CartResource;
 use App\Models\Cart;
 use App\Models\Item;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
@@ -19,23 +20,25 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request\Cart\CartStoreRequest  $request
      * @return \Illuminate\Http\Resources\Json\JsonResource
      */
-    public function store(CartStoreRequest $request): JsonResource
+    public function store(CartStoreRequest $request): JsonResponse
     {
         $validated = $request->validated();
 
-        if (!$request->has('cart_id')) {
+        if (!$request->has('cart_id') || $request->get('cart_id') === null) {
             $cart = Cart::create();
         } else {
             $cart = Cart::where('id', $validated['cart_id'])->firstOrFail();
         }
 
-        // $item = $cart->items()->create($validated);
         $item = Item::create($validated);
         $cart->items()->attach($item->id);
 
         $cart->load("items");
 
-        return new CartResource($cart);
+        // return new CartResource($cart);
+        return response()->json([
+            "id" => $cart->id
+        ]);
     }
 
     /**
